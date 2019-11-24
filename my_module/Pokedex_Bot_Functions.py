@@ -3,19 +3,19 @@ import pandas as pd
 
 """This file holds a collection of functions that I created in order to make my chatbot. 
    I created all of the functions myself except for two of them which are modifications 
-   of the end_chat method in A3-Chatbots. I took this method's general layout and made 
+   of the end_chat function in A3-Chatbots. I took this function's general layout and made 
    two separate implementations of it that work for my project called check_quit and 
    check_other. I only used concepts that were taught in class; although, I did have to 
    use pandas which was vaguely mentioned in class so I had to look up its documentation 
-   by myself. This led me to create a multitude of dictionaries that I utilize throughout 
-   all the functions.
+   by myself. This led me to create a multitude of dictionaries that are utilized throughout 
+   most of the functions.
 """
 
 #Variable utilized to access external CSV file that holds all data about the Pokemon
 csv_access = pd.read_csv("Pokemon_Data.csv")
 
 #Dictionaries used to differentiate between different information from the CSV file
-pokemon_dict = dict(zip(csv_access.Name, csv_access.Number))
+number_dict = dict(zip(csv_access.Name, csv_access.Number))
 type_dict = dict(zip(csv_access.Name, csv_access.Type))
 HP_dict = dict(zip(csv_access.Name, csv_access.HP))
 attack_dict = dict(zip(csv_access.Name, csv_access.Attack))
@@ -47,7 +47,7 @@ def get_number(name):
     output: int
         Number position of the specific Pokemon in the Pokedex
     """ 
-    output = pokemon_dict[name]
+    output = number_dict[name]
     return output
 
 def get_type(name):
@@ -278,9 +278,9 @@ def is_pokemon(name):
     Returns
     -------
     boolean
-        Whether or not the input is in pokemon_dict
+        Whether or not the input is in number_dict
     """ 
-    if name in pokemon_dict:
+    if name in number_dict:
         return True
     else:
         return False
@@ -389,13 +389,13 @@ def other_lookup():
 
 def not_a_pokemon():
     """Prints out statements if user types in a name that is
-    not in the Kanto Pokedex."""
+       not in the Kanto Pokedex."""
     print("This is not a Pokemon that exists in the Kanto Dex.")
     print("Please type in another Pokemon's name.\n")
     
 def not_info():
     """Prints out statements if user types in a type of
-    information that is not in the Kanto Pokedex."""
+       information that is not in the Kanto Pokedex."""
     print("This is not valid information that we have in our Dex.")
     print("Please type in another piece of information that you would like to know about your Pokemon\n")
     
